@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//CHECK WITH AARON - When namespace change wont load on unity
 namespace WriteYourNameHere
 {
     /// <summary>
@@ -15,9 +17,9 @@ namespace WriteYourNameHere
         // TODO Movement 1/8: Declare a variable for a reference to our 2D rigidbody, for physics stuff.
 
         // TODO Movement 2/8: Declare a variable for the speed we can run at in Unity-units-per-second.
-
+        public float runSpeed = 1;
         // TODO Movement 3/8: Declare a variable for the strength of our jump.
-
+        public float jumpStrength = 1;
 
         private void Update()
         {
