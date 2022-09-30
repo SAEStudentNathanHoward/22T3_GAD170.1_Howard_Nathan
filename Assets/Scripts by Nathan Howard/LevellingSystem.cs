@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using WriteYourNameHere;
 
@@ -13,10 +15,10 @@ namespace NathanHoward
         private int levelUpXp;
         public bool isExpGain = false;
 
-        private float newRunSpeed;
-        private float newJumpStrength;
+        // Referencing the SimpleCharacterControler script to allow usage of its variables.
+        public SimpleCharacterController scripts;
 
-        private void Start()
+        public void Start()
         {
             // Setting and showing the starting level stats.
             currentLevel = 1;
@@ -27,7 +29,7 @@ namespace NathanHoward
             Debug.Log("Curent Level = " + currentLevel);
             Debug.Log("Current XP = " + currentXp);
             Debug.Log("Xp needed for Lvl up = " + levelUpXp);
-
+            
         }
         // Created an Update class to constantly check for keypress and xp.
         private void Update()
@@ -58,10 +60,11 @@ namespace NathanHoward
                     Debug.Log("XP needed for Lvl up = " + levelUpXp);
 
                     // TODO XP Bonus: Adjust our character's stats ("runSpeed" and/or "jumpStrength") based on their level. (Hint: You'll need a reference to the SimpleCharacterController script!)
-                    //Adjusting runSpeed and jumpStrength
-
-                    Debug.Log("Current run speed = " + newRunSpeed);
-                    Debug.Log("Current jump strength = " + newJumpStrength);
+                    //Adjusting runSpeed and jumpStrength and debugging out.
+                    scripts.runSpeed = (float)(scripts.runSpeed + 0.5);
+                    scripts.jumpStrength = (float)(scripts.jumpStrength + 0.5);
+                    Debug.Log("Current run speed = " + scripts.runSpeed);
+                    Debug.Log("Current jump strength = " + scripts.jumpStrength);
                 }
             }
         }
