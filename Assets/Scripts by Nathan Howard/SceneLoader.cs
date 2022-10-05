@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -24,14 +25,13 @@ namespace NathanHoward
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-
+            //
+            if (collision.tag == "Player")
+            {
                 // Setting the scene on a collision to "Breif1" - ask Aaron about SceneManager.GetActiveScene()
                 loadThisScene = "Brief1 - Level 1";
                 LoadScene();
             }
-            // TODO Ask AAron about setting limits via camera?
-            // TODO Loader Bonus 1: Modify your load scene method so that you can write any string or int level and it will load that. (Hint: Adding parameters to it might help!)
-            // TODO Loader Bonus 2: Add a reference to your second scene (or any scenes you want) so that a second (or more) level can be loaded!
-
+        }
     }
 }
