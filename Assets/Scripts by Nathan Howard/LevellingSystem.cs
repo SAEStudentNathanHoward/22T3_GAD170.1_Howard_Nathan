@@ -59,7 +59,6 @@ namespace NathanHoward
                     levelUpXp = currentLevel * 100;
                     Debug.Log("XP needed for Lvl up = " + levelUpXp);
 
-                    // TODO XP Bonus: Adjust our character's stats ("runSpeed" and/or "jumpStrength") based on their level. (Hint: You'll need a reference to the SimpleCharacterController script!)
                     //Adjusting runSpeed and jumpStrength and debugging out.
                     scripts.runSpeed = (float)(scripts.runSpeed + 0.5);
                     scripts.jumpStrength = (float)(scripts.jumpStrength + 0.5);
