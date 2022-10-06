@@ -21,8 +21,8 @@ namespace NathanHoward
         public void Start()
         {
             // Setting and showing the starting level stats.
-            currentLevel = 1;
-            currentXp = 0;
+            //currentLevel = 1;
+            //currentXp = 0;
             levelUpXp = currentLevel * 100;
 
             //Debugging out the values.
@@ -31,19 +31,25 @@ namespace NathanHoward
             Debug.Log("Xp needed for Lvl up = " + levelUpXp);
             
         }
+        // Created a new class to handle our collision with a coin
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            //Checking if the player has colided with the player.
+            if (collision.tag == "Coins")
+            {
+                //Adding random number between 50 to 100 to currentXp.
+                currentXp += Random.Range(50, 100);
+                Debug.Log("New Current Xp = " + currentXp);
+                collision.gameObject.SetActive(false);
+            }
+        }
+
         // Created an Update class to constantly check for keypress and xp.
         private void Update()
         {
-            //Setting the "Return" key as a boolean for the purpose of checking key press .
-            isExpGain = Input.GetButtonDown("Submit");
-
-            //Checking if the key is pressed.
-            if (isExpGain == true)
-            {
-                //Adding random number between 50 to 100 to currentXp.
-                currentXp = currentXp + Random.Range(50, 100);
-                Debug.Log("New Current Xp = " + currentXp);
-                
+            //Was here for testing script - Setting the "Return" key as a boolean for the purpose of checking key press .
+            //isExpGain = Input.GetButtonDown("Submit");
+               
                 //Checking for level up.
                 if (currentXp > levelUpXp)
                 {
@@ -60,12 +66,11 @@ namespace NathanHoward
                     Debug.Log("XP needed for Lvl up = " + levelUpXp);
 
                     //Adjusting runSpeed and jumpStrength and debugging out.
-                    scripts.runSpeed = (float)(scripts.runSpeed + 0.5);
-                    scripts.jumpStrength = (float)(scripts.jumpStrength + 0.5);
+                    scripts.runSpeed = (float)(scripts.runSpeed + 1.5);
+                    scripts.jumpStrength = (float)(scripts.jumpStrength + 1.5);
                     Debug.Log("Current run speed = " + scripts.runSpeed);
                     Debug.Log("Current jump strength = " + scripts.jumpStrength);
                 }
-            }
         }
     }
 }

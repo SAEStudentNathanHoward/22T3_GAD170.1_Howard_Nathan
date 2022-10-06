@@ -10,25 +10,23 @@ namespace NathanHoward
     /// <summary>
     /// This class holds functionality for scene transition and reloading this scene to restart the game.
     /// </summary>
-    public class SceneLoader : MonoBehaviour
+    public class SceneRestarter : MonoBehaviour
     {
         // Declaration of the string variable used to load scenes
         [Header("Scene Loader")]
-        [SerializeField] public string loadThisScene;
+        [SerializeField] public string restartThisScene;
 
         private void LoadScene()
         {
             // Using Scenemanger to load the required scene
-            SceneManager.LoadScene(loadThisScene);
+            SceneManager.LoadScene(restartThisScene);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void Update()
         {
-            // Checking the collision against the player object tag
-            if (collision.tag == "Player")
+            // Checking the R key for a press
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                // Setting the scene on a collision to "Breif1" - ask Aaron about SceneManager.GetActiveScene()
-                //loadThisScene = "Brief1 - Level 1";
                 LoadScene();
             }
         }
